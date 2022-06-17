@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cydeo</groupId>
-	<artifactId>ticketing-project-orm</artifactId>
+	<artifactId>ticketing-project-security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ticketing-project-orm</name>
-	<description>ticketing-project-orm</description>
+	<name>ticketing-project-security</name>
+	<description>ticketing-project-security</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -29,18 +29,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
-		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

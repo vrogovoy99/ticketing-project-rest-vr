@@ -1,6 +1,5 @@
 package com.cydeo.entity;
 
-
 import com.cydeo.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +36,5 @@ public class Project extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Status projectStatus;
-
 
 }
