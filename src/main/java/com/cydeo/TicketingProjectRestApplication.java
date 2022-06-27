@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class TicketingProjectOrmApplication {
+public class TicketingProjectRestApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(TicketingProjectOrmApplication.class, args);
+		SpringApplication.run(TicketingProjectRestApplication.class, args);
 	}
 
 	@Bean
