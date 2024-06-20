@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)//JSON will not include body if body is null
 public class ResponseWrapper {
 
     private boolean success;

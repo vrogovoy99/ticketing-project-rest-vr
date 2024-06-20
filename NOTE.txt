@@ -33,3 +33,14 @@
     }
 
     NOTE: in case of NO_CONTENT - the body will not be sent with the response.
+
+3.4. Suppress JSON body in case of empty body
+
+    in ResponseWrapper add annotation
+    @JsonInclude(JsonInclude.Include.NON_NULL)//JSON will not include body if body is null
+
+3.5. Suppress password in JSON
+
+    add in UserDTO class annotation:
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String passWord;

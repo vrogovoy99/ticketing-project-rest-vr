@@ -3,8 +3,6 @@ package com.cydeo.controller;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.entity.ResponseWrapper;
 import com.cydeo.service.UserService;
-import org.apache.catalina.filters.AddDefaultCharsetFilter;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +33,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<ResponseWrapper> createUser(@RequestBody UserDTO userDTO){
         userService.save(userDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseWrapper("User created", HttpStatus.CREATED))
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseWrapper("User created", HttpStatus.CREATED));
     }
 
     @PutMapping
