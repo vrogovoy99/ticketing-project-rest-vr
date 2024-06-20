@@ -1,0 +1,35 @@
+1. Add ResponseWrapper entity for api output
+2. Add controller package
+3. Add UserController class to handle user related api calls:
+
+    @RestController
+    @RequestMapping("/api/v1/user")
+    public class UserController {
+    }
+
+3.1. Methods like:
+
+        @GetMapping("/{userName}")
+        public ResponseEntity<ResponseWrapper> getUserByUserName(@PathVariable("userName") String userName){
+            UserDTO userDTO = userService.findByUserName(userName);
+            return ResponseEntity.ok(new ResponseWrapper("User found", userDTO, HttpStatus.OK));
+        }
+
+3.2. create return status:
+
+    @PostMapping
+    public ResponseEntity<ResponseWrapper> createUser(@RequestBody UserDTO userDTO){
+        userService.save(userDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseWrapper("User created", HttpStatus.CREATED))
+    }
+
+3.3. delete return status:
+
+    @DeleteMapping("/{userName}")
+    public ResponseEntity<ResponseWrapper> deleteUser (@PathVariable("userName") String userName){
+        userService.deleteByUserName(userName);
+//        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new ResponseWrapper("User deleted", HttpStatus.NO_CONTENT));
+        return ResponseEntity.ok(new ResponseWrapper("User deleted", HttpStatus.NO_CONTENT));
+    }
+
+    NOTE: in case of NO_CONTENT - the body will not be sent with the response.
