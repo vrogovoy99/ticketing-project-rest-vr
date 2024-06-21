@@ -128,5 +128,11 @@ public class ProjectServiceImpl implements ProjectService {
         return list.stream().map(projectMapper::convertToDto).collect(Collectors.toList());
     }
 
+    @Override
+    public List<ProjectDTO> readAllByAssignedManagerUserName(String assignedManagerUserName) {
+        List<Project> list = projectRepository.findAllByAssignedManagerUserName(assignedManagerUserName);
+        return list.stream().map(projectMapper::convertToDto).collect(Collectors.toList());
+    }
+
 
 }

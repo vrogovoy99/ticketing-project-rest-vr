@@ -17,4 +17,5 @@ public interface ProjectService {
     List<ProjectDTO> listAllProjectDetails();
 
     List<ProjectDTO> readAllByAssignedManager(User assignedManager);
+    List<ProjectDTO> readAllByAssignedManagerUserName(String assignedManagerUserName);
 }
