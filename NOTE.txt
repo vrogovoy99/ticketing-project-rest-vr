@@ -87,3 +87,50 @@
     ROLE MAPPING:
     Client Roles    -   ticketing-app
     Assign Role     -   Manager         Admin   Employee
+
+4.7. add keycloak spring dependency in pom.xml
+
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-spring-boot-starter</artifactId>
+			<version>18.0.0</version>
+		</dependency>
+
+4.8. paste keycloak configuration information in application.properties
+
+
+        keycloak.realm=cydeo-dev
+        keycloak.auth-server-url=http://localhost:8080/auth
+        keycloak.ssl-required=external
+        keycloak.resource=ticketing-app
+        keycloak.credentials.secret=6sOJLsuimxvZvvwgrCBCgcDCEY9cVYno
+        keycloak.use-resource-role-mappings=true
+        keycloak.bearer-only=true
+        spring.main.allow-circular-references=true
+
+        master.user=admin
+        master.user.password=admin
+        master.realm=master
+        master.client=master-client
+
+4.9. Copy SecurityConfig.java to com.cydeo.config
+
+4.10. Implement access control in controller files:
+
+4.10.1. UserController:
+
+            @RolesAllowed("Admin")
+            public ResponseEntity<ResponseWrapper> getUsers(){
+
+4.10.2. ProjectController:
+
+            @RolesAllowed({"Manager", "Admin"})
+            public ResponseEntity<ResponseWrapper> getProjects() {
+
+
+4.10.3. TaskController....
+
