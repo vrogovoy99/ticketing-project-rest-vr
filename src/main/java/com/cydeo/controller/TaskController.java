@@ -3,13 +3,9 @@ package com.cydeo.controller;
 import com.cydeo.dto.TaskDTO;
 import com.cydeo.entity.ResponseWrapper;
 import com.cydeo.enums.Status;
-import com.cydeo.service.ProjectService;
 import com.cydeo.service.TaskService;
-import com.cydeo.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
