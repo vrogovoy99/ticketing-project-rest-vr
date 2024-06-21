@@ -39,8 +39,51 @@
     in ResponseWrapper add annotation
     @JsonInclude(JsonInclude.Include.NON_NULL)//JSON will not include body if body is null
 
-3.5. Suppress password in JSON
+3.5. Suppress password in JSON (accept incoming/suppress outgoing
 
     add in UserDTO class annotation:
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String passWord;
+
+3.6. Suppress incoming data in JSON, since it has to be calculated by app:
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int completeTaskCounts;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int unfinishedTaskCounts;
+
+4. Keycloak setup
+
+4.1. make sure ticketing app is running on port 8081
+
+    add: server.port=8081
+    in: application.properties file.
+
+4.2. in GitBash go to  ~/IdeaProjects/spring/keycloak/bin and run  ./standalone.sh
+
+4.3. go to http://localhost:8080/auth/ and login as admin/admin
+
+4.4. add ticketing-app client under Cydeo-dev realm
+
+    Access Type             -   confidential
+    Standard Flow Enabled   -   OFF (since we do not have UI)
+    Service Accounts Enabled -  ON
+
+4.5. For the client add Roles (same as roles in application):
+
+    Admin
+    Manager
+    Employee
+
+4.6. Create users
+
+    mike                                ozzy    sam
+    Email Verified - ON
+
+    CREDENTIALS:
+    password: abc1
+    Temporary: OFF
+
+    ROLE MAPPING:
+    Client Roles    -   ticketing-app
+    Assign Role     -   Manager         Admin   Employee
