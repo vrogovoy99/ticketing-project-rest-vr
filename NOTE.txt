@@ -134,3 +134,29 @@
 
 4.10.3. TaskController....
 
+5. Utilize Keycloak security.
+
+5.1. replace ProjectServiceImpl.java hardcoded user:
+
+        UserDTO currentUserDTO = userService.findByUserName("harold@manager.com");
+
+    with current authenticated user:
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        SimpleKeycloakAccount details = (SimpleKeycloakAccount) authentication.getDetails();
+        String username = details.getKeycloakSecurityContext().getToken().getPreferredUsername();
+        UserDTO currentUserDTO = userService.findByUserName(username);
+
+5.2. replace TaskServiceImpl.java hardcoded users with the code above.
+
+6. To test security
+
+6.1. setup postman getUser
+
+    GET:            localhost:8081/api/v1/user
+    Type:           OAuth 2.0
+    Grant Type:     Password Credentials
+    Client ID:      ticketing-app
+    Client Secret:  secret from Keyclock or application.properties file
+    Username:       ozzy
+    Password:       abc1
