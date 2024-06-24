@@ -189,7 +189,13 @@
 
 7.3. Add com.cydeo.config - KeycloakProperties
 
-8. Create Keycloak Services:
+8. Create Keycloak Services Implementation
+
+9. After first run change application.properties:
+
+    spring.jpa.hibernate.ddl-auto=update
+
+10. Swagger
 
 8.1. KeycloakService interface in com.cydeo.service
 
