@@ -191,12 +191,39 @@
 
 8. Create Keycloak Services Implementation
 
+8.1. KeycloakService interface in com.cydeo.service
+
+8.2. KeycloakServiceImpl class in com.cydeo.service.impl
+
 9. After first run change application.properties:
 
     spring.jpa.hibernate.ddl-auto=update
 
 10. Swagger
 
-8.1. KeycloakService interface in com.cydeo.service
+10.1. add dependency
 
-8.2. KeycloakServiceImpl class in com.cydeo.service.impl
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.6</version>
+        </dependency>
+
+10.2. add SwaggerConfig class in com.cydeo.config
+
+10.3. Since we use authorizationCode flow in SwaggerFonfig.createOAuthFlows, we need to change
+
+10.3.1. Keycloak > Cydeo-dev > clients > ticketing-app > Standard Flow Enabled = ON.
+
+10.3.2. Valid Redirect URIs: http://localhost:8081/*
+
+10.3.3. Web Origins: http://localhost:8081
+
+10.4. Add @Tag and @Operations annotations in controller files. (Optional)
+
+10.5. to run OpenAPI go to http://localhost:8081/swagger-ui/index.html
+
+10.5.1. client - tickeking-app, secret is in application.properties
+
+10.5.2. user login: ozzy/abc1
+
