@@ -160,3 +160,31 @@
     Client Secret:  secret from Keyclock or application.properties file
     Username:       ozzy
     Password:       abc1
+
+7. Auto security - create security users from application
+
+7.1. Add dependency
+
+        <dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-admin-client</artifactId>
+			<version>18.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.ws.rs</groupId>
+			<artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+
+7.2. add keycloak admin in application.properties
+
+        master.user=admin
+        master.user.password=admin
+        master.realm=master
+        master.client=master-client
+
+7.2.1. Create master-client in keycloak (required setup for auto security to work)
+
+        Master realm > Clients > Create master-client
+
+7.3. Add com.cydeo.config - KeycloakProperties
