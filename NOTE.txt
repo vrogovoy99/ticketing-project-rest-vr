@@ -227,3 +227,28 @@
 
 10.5.2. user login: ozzy/abc1
 
+11. Exceptions
+
+11.1. create exception package and TicketingProjectException extends Exception class AND GlobalExceptionHandler.
+
+    example: UserServiceImpl.delete:
+
+     add throws TicketingProjectException
+     add else{ throw new TicketingProjectException("User can not be deleted"); }
+
+11.2. Custom annotation.
+
+11.2.1. In com.cydeo.annotation create Annotation DefaultExceptionMessage
+11.2.2. add DefaultExceptionMessageDto
+
+11.3.a setup error handling in UserServiceImpl.checkIfUserCanBeDeleted add
+
+
+        if (user == null) {
+            throw new TicketingProjectException("User not found");
+        }
+
+11.3.b UserController annotation to be added in deleteUser method:
+
+     @DefaultExceptionMessage(defaultMessage = "Failed to delete user")
+
