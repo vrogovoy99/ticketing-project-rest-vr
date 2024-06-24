@@ -188,3 +188,9 @@
         Master realm > Clients > Create master-client
 
 7.3. Add com.cydeo.config - KeycloakProperties
+
+8. Create Keycloak Services:
+
+8.1. KeycloakService interface in com.cydeo.service
+
+8.2. KeycloakServiceImpl class in com.cydeo.service.impl
