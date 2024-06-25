@@ -1,7 +1,9 @@
 package com.cydeo.controller;
 
+import com.cydeo.annotation.DefaultExceptionMessage;
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.entity.ResponseWrapper;
+import com.cydeo.exception.TicketingProjectException;
 import com.cydeo.service.ProjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,8 @@ public class ProjectController {
 
     @GetMapping("/{projectCode}")
     @RolesAllowed("Manager")
-    public ResponseEntity<ResponseWrapper> getProjectByCode(@PathVariable("projectCode") String projectCode ) {
+    @DefaultExceptionMessage(defaultMessage = "Failed to find project")
+    public ResponseEntity<ResponseWrapper> getProjectByCode(@PathVariable("projectCode") String projectCode ) throws TicketingProjectException {
 
         ProjectDTO projectDTO = projectService.getByProjectCode(projectCode);
         return ResponseEntity.ok(new ResponseWrapper("Requested project retrieved", projectDTO, HttpStatus.OK));

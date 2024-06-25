@@ -252,3 +252,15 @@
 
      @DefaultExceptionMessage(defaultMessage = "Failed to delete user")
 
+____________________
+Security Setup
+mike    Manager
+ozzy    Admin
+sam     Employee
+
+
+getProjects         GET localhost:8081/api/v1/project           Manager, Admin
+getProjectByCode    GET localhost:8081/api/v1/project/{id}      Manager
+createProject       POST localhost:8081/api/v1/project          Manager
+updateProject       PUT localhost:8081/api/v1/project           Manager
+deleteProject       DELETE localhost:8081/api/v1/project/{id}   Manager

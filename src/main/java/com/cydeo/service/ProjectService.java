@@ -2,12 +2,13 @@ package com.cydeo.service;
 
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.entity.User;
+import com.cydeo.exception.TicketingProjectException;
 
 import java.util.List;
 
 public interface ProjectService {
 
-    ProjectDTO getByProjectCode(String code);
+    ProjectDTO getByProjectCode(String code) throws TicketingProjectException;
     List<ProjectDTO> listAllProjects();
     void save(ProjectDTO dto);
     void update(ProjectDTO dto);

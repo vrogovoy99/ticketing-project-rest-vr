@@ -5,6 +5,7 @@ import com.cydeo.dto.UserDTO;
 import com.cydeo.entity.Project;
 import com.cydeo.entity.User;
 import com.cydeo.enums.Status;
+import com.cydeo.exception.TicketingProjectException;
 import com.cydeo.mapper.ProjectMapper;
 import com.cydeo.mapper.UserMapper;
 import com.cydeo.repository.ProjectRepository;
@@ -38,8 +39,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectDTO getByProjectCode(String code) {
+    public ProjectDTO getByProjectCode(String code) throws TicketingProjectException {
         Project project = projectRepository.findByProjectCode(code);
+        //VR
+        if (project==null) throw new TicketingProjectException("Project with project code " + code + " not found");
+
         return projectMapper.convertToDto(project);
     }
 
