@@ -264,3 +264,36 @@ getProjectByCode    GET localhost:8081/api/v1/project/{id}      Manager
 createProject       POST localhost:8081/api/v1/project          Manager
 updateProject       PUT localhost:8081/api/v1/project           Manager
 deleteProject       DELETE localhost:8081/api/v1/project/{id}   Manager
+
+
+-------------------------------------
+
+AOP setup
+
+1. add dependency
+
+    		<dependency>
+    			<groupId>org.springframework.boot</groupId>
+    			<artifactId>spring-boot-starter-aop</artifactId>
+    		</dependency>
+
+2. create aspect module + LogginAspect +
+    @Aspect
+    @Configuration
+    to identify users accessing ProjectController and TaskController.
+
+2.1. add ready getUserName method
+
+    private String getUserName(){
+        Authentication authentication  = SecurityContextHolder.getContext().getAuthentication();
+        SimpleKeycloakAccount details = (SimpleKeycloakAccount) authentication.getDetails();
+
+        return  details.getKeycloakSecurityContext().getToken().getPreferredUsername();
+    }
+
+2.2. add    @Pointcut("execution(* com.cydeo.controller.ProjectController.*(..)) || execution(* com.cydeo.controller.TaskController.*(..))")
+             private void anyControllerOperation(){}
+
+2.3. add Advice @Before & @After
+
+2.4. start Keycloak. start ticketing app, use postman to access app.
