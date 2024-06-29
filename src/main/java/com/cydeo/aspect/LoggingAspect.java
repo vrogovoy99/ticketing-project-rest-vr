@@ -48,5 +48,4 @@ public class LoggingAspect {
         log.info("AfterThrowing  -> User : {} - Method : {} - Exception: {}", username, joinPoint.getSignature().toShortString(), exception.getMessage());
     }
 
-
 }
