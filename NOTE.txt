@@ -270,7 +270,7 @@ deleteProject       DELETE localhost:8081/api/v1/project/{id}   Manager
 
 AOP setup
 
-1. add dependency
+1. add dependency - that automatically adds Spring - Slf4j - logback framework
 
     		<dependency>
     			<groupId>org.springframework.boot</groupId>
@@ -282,7 +282,7 @@ AOP setup
     @Configuration
     to identify users accessing ProjectController and TaskController.
 
-2.1. add ready getUserName method
+2.1. add ready getUserName method (security user access logging)
 
     private String getUserName(){
         Authentication authentication  = SecurityContextHolder.getContext().getAuthentication();
@@ -297,3 +297,44 @@ AOP setup
 2.3. add Advice @Before & @After
 
 2.4. start Keycloak. start ticketing app, use postman to access app.
+
+2.5. application performance logging
+
+2.5.1. Add PerformanceAspect.class and ExecutionTime annotation
+
+    log.info("...
+
+    LOG LEVELS:
+        FATAL
+        ERROR
+        WARN
+        INFO (default)
+        DEBUG (debug=true in application.properties file)
+        TRACE
+
+3. Use of logging Slf4j
+
+3.1. create log4j2.properties in resources folder
+
+3.2. exclude default logging in pom.xml by adding below block on top of dependencies section:
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+        AND add log4j2 dependency
+
+        		<dependency>
+        			<groupId>org.springframework.boot</groupId>
+        			<artifactId>spring-boot-starter-log4j2</artifactId>
+        		</dependency>
+
+

@@ -35,7 +35,7 @@ public class TaskController {
     @RolesAllowed("Manager")
     public ResponseEntity<ResponseWrapper> getTasksById(@PathVariable("id") Long id) {
         TaskDTO taskDTO =  taskService.findById(id);
-        return ResponseEntity.ok(new ResponseWrapper("Task found", taskDTO, HttpStatus.OK));
+        return ResponseEntity.ok(new ResponseWrapper("Task found " + taskDTO.getTaskSubject(), taskDTO, HttpStatus.OK));
     }
 
     @PostMapping
