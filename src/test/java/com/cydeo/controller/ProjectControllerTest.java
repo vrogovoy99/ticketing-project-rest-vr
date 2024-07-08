@@ -6,14 +6,17 @@ import com.cydeo.dto.UserDTO;
 import com.cydeo.enums.Gender;
 import com.cydeo.enums.Status;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -46,6 +49,15 @@ class ProjectControllerTest {
                 .projectDetail("Api Test")
                 .projectStatus(Status.OPEN)
                 .build();
+    }
+
+    @Test
+    public void givenNoToken_whenGetRequest() throws Exception {
+
+        //without passing a sec token security will fail - code 400
+        mvc.perform(MockMvcRequestBuilders
+                .get("/api/v1/project"))
+                .andExpect(status().is4xxClientError());
     }
 
 

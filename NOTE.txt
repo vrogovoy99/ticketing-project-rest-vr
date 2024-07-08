@@ -342,8 +342,8 @@ AOP setup
 
 4.1. In ProjectControlTest class add class annotations
 
-        @SpringBootTest
-        @AutoConfigureMockMvc
+        @SpringBootTest             - gives all beans in spring ap
+        @AutoConfigureMockMvc       - gives mockmvc bean
 
 4.2. Autowire MockMvc
 
