@@ -338,3 +338,25 @@ AOP setup
         		</dependency>
 
 
+4. TESTING
+
+4.1. In ProjectControlTest class add class annotations
+
+        @SpringBootTest
+        @AutoConfigureMockMvc
+
+4.2. Autowire MockMvc
+
+
+    @Autowired
+    private MockMvc mvc;
+
+4.3. Define userDTO and projectDTO
+
+4.4. Initialize variables in @BeforeAll method
+
+
+
+
+
+
