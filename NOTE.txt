@@ -355,7 +355,26 @@ AOP setup
 
 4.4. Initialize variables in @BeforeAll method
 
+4.5. To run test with security token, get token from postmaster and add it in the test code
 
+4.6. Documentation for MockMvcResultMatchers.jsonPath:
+
+        https://github.com/json-path/JsonPath
+
+4.7. code to convert objects to json:
+
+    private static String toJsonString(final Object obj) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+            objectMapper.registerModule(new JavaTimeModule());
+            return objectMapper.writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+4.8. in order to avoid manualy getting new Keycode token and update it in the script use ProjectControllerTest.makeRequest method to get token automatically.
 
 
 

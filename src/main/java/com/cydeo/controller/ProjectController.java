@@ -42,7 +42,7 @@ public class ProjectController {
 
     }
 
-    @PostMapping("/")
+    @PostMapping
     @RolesAllowed("Manager")
     public ResponseEntity<ResponseWrapper> createProject(@RequestBody ProjectDTO project) {
 
