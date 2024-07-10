@@ -376,6 +376,8 @@ AOP setup
 
 4.8. in order to avoid manualy getting new Keycode token and update it in the script use ProjectControllerTest.makeRequest method to get token automatically.
 
+4.8.1. ResponseDTO is a custom class to limit KeCloak response to token only
+
 
 
 
